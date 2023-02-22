@@ -1,11 +1,4 @@
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
 ## Requirements
 
 - [Docker](https://docs.docker.com/engine/install/)
@@ -25,5 +18,12 @@ If facing any issues getting the project started, following [Laravel's documenta
 
 You will be able to access this application on your [localhost](http://localhost/).
 On the application you're able to see a list of planets, starships and people from the starwars universe as well as search for specific people.
+
+## Information
+
+Technologies/Frameworks used:
+- [Docker](https://docs.docker.com/)
+- [Laravel](https://laravel.com/docs/10.x)
+- [Vue.js](https://vuejs.org/guide/introduction.html)
 
 
