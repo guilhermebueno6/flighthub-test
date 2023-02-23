@@ -15,8 +15,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
         <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 
         <!-- Vite req -->
@@ -39,7 +39,6 @@
                     <button class="nav-link" id="starship-tab" data-bs-toggle="tab" data-bs-target="#starship" type="button" role="tab" aria-controls="starship" aria-selected="false">Starships</button>
                 </li>
 
-
             </ul>
 
             <div class="tab-content" id="myTabContent">
@@ -49,24 +48,24 @@
                 </div>
 
                 <div class="tab-pane fade" id="planet" role="tabpanel" aria-labelledby="planet-tab">
-                    <planet-component :planets="{{json_encode($planets)}}"></<planet-component>
+                    <planet-component></<planet-component>
                 </div>
 
                 <div class="tab-pane fade" id="starship" role="tabpanel" aria-labelledby="starship-tab">
-                    <starships-component :starships="{{json_encode($starships)}}"></<starships-component>
+                    <starships-component></<starships-component>
                 </div>
-
-
-                
-
-                
-                
 
             </div>
 
-            
+            <div class="col-12 p-5">
+                <h1>Star Wars API Demo</h1>
+                <p>
+                    Visualize some of the information getting accessed from the SWAPI! 
+                    <br>
+                    Try searching for specific characters on the People Search bar!
+                </p>
+            </div>
+
         </div>  
-
-
     </body>
 </html>

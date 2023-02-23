@@ -13,15 +13,7 @@ class DashController extends Controller
      */
     public function show(): View
     {
-        $planetsData = Http::get('swapi.dev/api/planets/');
-        $starshipsData = Http::get('swapi.dev/api/starships/');
-        $planets = $planetsData['results'];
-        $starships = $starshipsData['results'];
-
-        return view('dashboard', [
-            'planets' => $planets,
-            'starships' => $starships
-            ]);
+        return view('dashboard');
     }
 
     public function search($string)
@@ -33,10 +25,36 @@ class DashController extends Controller
         
     }
 
-    public function getAll()
+    public function people($page = '')
     {
-        $peopleData = Http::get('swapi.dev/api/people/');
+
+        $peopleData = Http::get('https://swapi.dev/api/people/?page=' . $page);
         $people = $peopleData['results'];
-        return json_encode($people);
+        $next = $peopleData['next'];
+        $prev = $peopleData['previous'];
+
+        return json_encode(['people' => $people, 'next' => $next, 'previous' => $prev]);
+    }
+
+    public function planets($page = '')
+    {
+
+        $planetsData = Http::get('https://swapi.dev/api/planets/?page=' . $page);
+        $planets = $planetsData['results'];
+        $next = $planetsData['next'];
+        $prev = $planetsData['previous'];
+
+        return json_encode(['planets' => $planets, 'next' => $next, 'previous' => $prev]);
+    }
+
+    public function starships($page = '')
+    {
+
+        $starshipsData = Http::get('https://swapi.dev/api/starships/?page=' . $page);
+        $starships = $starshipsData['results'];
+        $next = $starshipsData['next'];
+        $prev = $starshipsData['previous'];
+
+        return json_encode(['starships' => $starships, 'next' => $next, 'previous' => $prev]);
     }
 }

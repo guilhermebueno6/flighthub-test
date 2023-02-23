@@ -26,13 +26,50 @@
             </tr>
         </tbody>
     </table>
+
+    <nav-component :next="nextPlanet" :previous="previousPlanet"></nav-component>
+    
 </template>
 
 <script>
     export default {
-        props: ['planets'],
-        created() {
-            console.log(this.planets)
-        }
+        data() {
+            return {
+                planets: [],
+                nextPlanet: '',
+                previousPlanet: '',
+            };
+        },
+        mounted() {
+            this.fireRequest('1')
+        },
+        methods: {
+            fireRequest(page){
+
+                    if(page == undefined){
+                        page = ''
+                    }
+                    axios.get("/planets/" + page)
+                    .then(response => {
+                        this.planets = [...response.data.planets]
+                        this.nextPlanet = response.data.next
+                        this.nextPlanet = this.nextPlanet.replace('https://swapi.dev/api/planets/?page=', '')
+                        this.previousPlanet = response.data.previous
+                        if(this.previousPlanet == null){
+                            this.previousPlanet = '1'
+                        }
+                        else{
+                            this.previousPlanet = this.previousPlanet.replace('https://swapi.dev/api/planets/?page=', '')
+                        }
+                        
+                    })
+                    .catch(err => {
+                            console.log(err)  
+                    })
+                } 
+
+                
+            }
+        
     }
 </script>

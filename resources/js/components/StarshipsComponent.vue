@@ -31,13 +31,50 @@
             </tr>
         </tbody>
     </table>
+
+    <nav-component :next="nextStarship" :previous="previousStarship"></nav-component>
+
 </template>
 
 <script>
     export default {
-        props: ['starships'],
-        created() {
-            console.log(this.starships)
-        }
+        data() {
+            return {
+                starships: [],
+                nextStarship: '',
+                previousStarship: '',
+            };
+        },
+        mounted() {
+            this.fireRequest('1')
+        },
+        methods: {
+            fireRequest(page){
+
+                    if(page == undefined){
+                        page = ''
+                    }
+                    axios.get("/starships/" + page)
+                    .then(response => {
+                        this.starships = [...response.data.starships]
+                        this.nextStarship = response.data.next
+                        this.nextStarship = this.nextStarship.replace('https://swapi.dev/api/starships/?page=', '')
+                        this.previousStarship = response.data.previous
+                        if(this.previousStarship == null){
+                            this.previousStarship = '1'
+                        }
+                        else{
+                            this.previousStarship = this.previousStarship.replace('https://swapi.dev/api/starships/?page=', '')
+                        }
+                        
+                    })
+                    .catch(err => {
+                            console.log(err)  
+                    })
+                } 
+
+                
+            }
+        
     }
 </script>

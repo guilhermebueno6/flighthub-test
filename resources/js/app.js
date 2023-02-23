@@ -17,12 +17,18 @@ const app = createApp({});
 
 import PeopleComponent from './components/PeopleComponent.vue';
 app.component('people-component', PeopleComponent);
+
 import PlanetComponent from './components/PlanetComponent.vue';
 app.component('planet-component', PlanetComponent);
+
 import StarshipsComponent from './components/StarshipsComponent.vue';
 app.component('starships-component', StarshipsComponent);
+
 import SearchComponent from './components/SearchComponent.vue';
 app.component('search-component', SearchComponent);
+
+import NavComponent from './components/NavComponent.vue';
+app.component('nav-component', NavComponent);
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 

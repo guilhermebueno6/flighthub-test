@@ -14,14 +14,15 @@
             <tr v-for="person in people">
                 <td>{{person.name}}</td>
                 <td>{{person.gender}}</td>
-                <td>{{person.height}}cm</td>
-                <td>{{person.mass}}kg</td>
+                <td>{{person.height}} cm</td>
+                <td>{{person.mass}} kg</td>
                 <td>{{person.hair_color}}</td>
                 <td>{{person.eye_color}}</td>
                 
             </tr>
         </tbody>
     </table>
+        
 </template>
 
 <script>

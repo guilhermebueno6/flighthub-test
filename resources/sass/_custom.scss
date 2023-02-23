@@ -1,1 +1,12 @@
-
+.searchBar{
+    padding: 0 10px;
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+    input{
+        width: 300px;
+    }
+}

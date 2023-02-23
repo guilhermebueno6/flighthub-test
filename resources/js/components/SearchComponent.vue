@@ -5,6 +5,11 @@
     </div>
     
     <people-component :people="people"></people-component>
+    
+    <nav-component :next="next" :previous="previous" :isSearch="true"></nav-component>
+
+    
+
 </template>
 
 <script>
@@ -13,23 +18,39 @@
             return {
                 people: [],
                 filter: '',
+                next: '',
+                previous: '',
             };
         },
         mounted() {
             if (this.filter.length < 1) {
-                this.fireRequest(true)
+                this.fireRequest(true, '1')
             }
         },
         methods: {
-            fireRequest(getAll){
+            fireRequest(getAll, page){
                 if(getAll || this.filter.length < 1)
                 {
-                    axios.get("/getall/")
+                    if(page == undefined){
+                        page = ''
+                        filter = ''
+                    }
+                    axios.get("/people/" + page)
                     .then(response => {
-                        this.people = [...response.data]
+                        this.people = [...response.data.people]
+                        this.next = response.data.next
+                        this.next = this.next.replace('https://swapi.dev/api/people/?page=', '')
+                        this.previous = response.data.previous
+                        if(this.previous == null){
+                            this.previous = '1'
+                        }
+                        else{
+                            this.previous = this.previous.replace('https://swapi.dev/api/people/?page=', '')
+                        }
+                        
                     })
                     .catch(err => {
-                            alert("Sorry, we had an error, try again")  
+                            console.log(err)  
                     })
                 } 
                 else
@@ -39,7 +60,7 @@
                         this.people = [...response.data]
                     })
                     .catch(err => {
-                            alert("Sorry, we had an error, try again")  
+                        console.log(err) 
                     })
                 }
                 

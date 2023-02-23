@@ -16,5 +16,12 @@ use App\Http\Controllers\DashController;
 Route::get('/', [DashController::class, 'show']);
 
 Route::get('/search/{name}', [DashController::class, 'search']);
+Route::get('/people/{page}', [DashController::class, 'people']);
+Route::get('/planets/{page}', [DashController::class, 'planets']);
+Route::get('/starships/{page}', [DashController::class, 'starships']);
 
-Route::get('/getall', [DashController::class, 'getAll']);
+Route::get('/people', [DashController::class, 'people']);
+Route::get('/planets', [DashController::class, 'planets']);
+Route::get('/starships', [DashController::class, 'starships']);
+
+
